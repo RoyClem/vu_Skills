@@ -15,3 +15,9 @@ export default {
   }
 }
 </script>
+<style scoped>
+.about {
+   border: 4px solid lightblue;
+   background: #fff;
+}
+</style>

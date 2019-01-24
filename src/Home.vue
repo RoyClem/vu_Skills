@@ -1,31 +1,31 @@
 <template>
-  <div id="app">
+  <div class="container" id="home">
       <nav>
         <router-link to="/">Home</router-link>
-        <router-link to="/about/Dude">About</router-link>
+        <router-link to="/App">Skills</router-link>
+        <router-link to="/About/Dude">About</router-link>
       </nav>
     <router-view/>
+    <p>Click in the nav links to change pages</p>
   </div>
 </template>
 
 <script>
-import Skills from './components/Skills.vue'
+import App from './components/App.vue'
 
 export default {
-  name: 'app',
-  components: {
-    Skills
-  }
+  name: 'Home',
+  components: {App}
 }
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+@import url('https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css');
 
 body {
   background-color: #EEEEEE;
   font-family: 'Montserrat', sans-serif;
-  display: grid;
+  display: grid; 
   grid-template-rows: auto;
   justify-items: center;
   padding-top: 50px;
@@ -44,11 +44,6 @@ nav a {
   font-weight: bold;
   margin-right: 15px;
 }
-body, html {
-  margin: 0;
-  height: 100%;
-}
-#app {
-    width: 50%;
-}
+
+
 </style>

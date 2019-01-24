@@ -1,16 +1,16 @@
 <template>
-  <div class="container">
+  <div >
      <form @submit.prevent="addSkill">
         <input type="text" placeholder="Enter a skill you have.." v-model="skill" v-validate="'min:2'" name="skill">
         <p class="alert" v-if="errors.has('skill')">{{ errors.first('skill') }}</p>    
       </form>
-    <div class="holder">
+    <div class="skills">
       <ul>
       <li v-for="(data, index) in skills" :key='index'>{{data.skill}}
         <i class="fa fa-minus-circle" v-on:click="remove(index)"></i>
       </li>
       </ul>
-      <p>These are the skills that you possess.</p>
+      <p>These are the skills you possess.</p>
     </div>
   </div>
 </template>
@@ -18,14 +18,12 @@
 <script>
 export default {
   name: 'Skills',
- data() {
+  props: ['skills'],
+  data() {
     return {
       skill: '',
-      skills: [
-          { "skill": "Vue.js" },
-          { "skill": ".NET" },
-      ],
-    }
+      skillList: this.skills
+    };
   },
   methods : {
       addSkill() {
@@ -34,7 +32,7 @@ export default {
             this.skills.push({skill: this.skill});
             this.skill = '';
           } else {
-            console.log('Not valid');
+            this.skill="";
           }
         })
       },
@@ -48,7 +46,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 @import "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"; 
-  .holder {
+  .skills {
     background: #fff;
   }
 
@@ -73,12 +71,9 @@ export default {
     color: gray;
   }
 
-  .container {
-    box-shadow: 0px 0px 40px lightgray;
-  }
 
   input {
-    width: calc(100% - 40px);
+    width: calc(100% - 0px);
     border: 0;
     padding: 20px;
     font-size: 1.3em;
